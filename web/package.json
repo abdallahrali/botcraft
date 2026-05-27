@@ -1,0 +1,18 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "docker:stop": "docker stop botcraft_server || true && docker rm botcraft_server || true",
+    "docker:build": "docker build -t botcraft-web .",
+    "docker:run": ". .env && docker run -d --name botcraft_server -p $PORT:$PORT --env-file .env botcraft-web",
+    "docker:deploy": "npm run docker:stop && npm run docker:build && npm run docker:run",
+    "docker:logs": "docker logs -f botcraft_server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
