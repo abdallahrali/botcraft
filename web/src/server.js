@@ -1,12 +1,9 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import MySQLStoreFactory from 'express-mysql-session';
 import AppRouter from './routes/AppRouter.js';
-import dotenv from 'dotenv';
-
-// Initialize environment variables
-dotenv.config();
 
 const app = express();
 const MySQLStore = MySQLStoreFactory(session);

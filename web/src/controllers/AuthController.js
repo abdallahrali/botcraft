@@ -18,7 +18,6 @@ class AuthController {
                     message: 'Missing required fields.'
                 });
             }
-
             const userId = await AuthService.register(firstName, lastName, email, password);
 
             // Automatically log in the user after registration

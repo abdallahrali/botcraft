@@ -2,12 +2,13 @@
   "name": "web",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
     "docker:stop": "docker stop botcraft_server || true && docker rm botcraft_server || true",
     "docker:build": "docker build -t botcraft-web .",
-    "docker:run": ". .env && docker run -d --name botcraft_server -p $PORT:$PORT --env-file .env botcraft-web",
+    "docker:run": "[ -f .env ] && . ./.env; docker run -d --name botcraft_server -p ${PORT:-8000}:${PORT:-8000} $([ -f .env ] && echo \"--env-file .env\") botcraft-web",
     "docker:deploy": "npm run docker:stop && npm run docker:build && npm run docker:run",
     "docker:logs": "docker logs -f botcraft_server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,9 +19,10 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-mysql-session": "^3.0.3",
     "express-session": "^1.19.0",
-    "mysql2": "^3.22.4"
+    "mysql2": "^3.23.0"
   }
 }

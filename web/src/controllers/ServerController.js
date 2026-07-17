@@ -12,7 +12,7 @@ class ServerController {
     /**
      * Retrieves all servers belonging to the logged-in user.
      */
-    async handleGetServers = async (req, res) => {
+    handleGetServers = async (req, res) => {
         try {
             const userId = req.session.userId;
             if (!userId) {
@@ -37,7 +37,7 @@ class ServerController {
     /**
      * Adds a new Minecraft server to the user's profile.
      */
-    async handleAddServer = async (req, res) => {
+    handleAddServer = async (req, res) => {
         try {
             const userId = req.session.userId;
             if (!userId) {
@@ -78,7 +78,7 @@ class ServerController {
     /**
      * Soft-deletes a server from the user's profile.
      */
-    async handleDeleteServer = async (req, res) => {
+    handleDeleteServer = async (req, res) => {
         try {
             const userId = req.session.userId;
             const { id } = req.params;

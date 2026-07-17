@@ -13,7 +13,7 @@ class BotController {
     /**
      * Fetches all bots belonging to the user.
      */
-    async handleGetBots = async (req, res) => {
+    handleGetBots = async (req, res) => {
         try {
             const userId = req.session.userId;
             if (!userId) {
@@ -38,7 +38,7 @@ class BotController {
     /**
      * Triggers a bot to start its connection sequence.
      */
-    async handleStartBot = async (req, res) => {
+    handleStartBot = async (req, res) => {
         try {
             const userId = req.session.userId;
             const { botId } = req.body;
@@ -76,7 +76,7 @@ class BotController {
     /**
      * Signals a bot to disconnect gracefully.
      */
-    async handleStopBot = async (req, res) => {
+    handleStopBot = async (req, res) => {
         try {
             const userId = req.session.userId;
             const { botId } = req.body;
@@ -114,7 +114,7 @@ class BotController {
     /**
      * Updates runtime parameters for a specific bot (reconnect delay, modules, etc).
      */
-    async handleUpdateConfig = async (req, res) => {
+    handleUpdateConfig = async (req, res) => {
         try {
             const userId = req.session.userId;
             const { id } = req.params;
