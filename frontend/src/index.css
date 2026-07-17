@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Layer: Global Dark-Mode Defaults ─────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-mc-obsidian text-white font-body antialiased overflow-x-hidden;
+    image-rendering: pixelated;
+  }
+
+  /* Force pixelated rendering on all canvases and images */
+  canvas,
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  /* Prevent blue highlight on mobile touch */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ── Components Layer: Minecraft UI Primitives ─────────────── */
+@layer components {
+
+  /* ── Buttons ──────────────────────────────────────────── */
+  .mc-button {
+    @apply bg-mc-stone-shadow text-white font-pixel text-[10px] px-4 py-3
+           shadow-mc-outset border-none outline-none cursor-pointer
+           select-none uppercase tracking-wider
+           active:translate-x-0.5 active:translate-y-0.5 transition-transform;
+    text-shadow: 2px 2px 0 #1a1a1a;
+  }
+  .mc-button:hover {
+    @apply bg-[#6868aa];
+  }
+
+  .mc-button-green {
+    @apply bg-mc-grass hover:bg-mc-grass/90;
+    text-shadow: 2px 2px 0 #1a3a1a;
+  }
+
+  /* ── Panels ───────────────────────────────────────────── */
+  .mc-panel {
+    @apply bg-mc-gui-light border-3 border-mc-stone shadow-mc-hard;
+  }
+
+  .mc-panel-dark {
+    @apply bg-mc-gui-dark border-3 border-black shadow-mc-hard;
+  }
+
+  /* ── Inset Slots / Input Boxes ────────────────────────── */
+  .mc-inset-box {
+    @apply bg-black/40 shadow-mc-inset border-none;
+  }
+
+  /* ── Scrollbar: Minecraft Stone Style ─────────────────── */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-mc-obsidian border-l-2 border-mc-stone-shadow;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-mc-stone-shadow border border-mc-stone hover:bg-mc-stone;
+  }
+}
+
+/* ── Utilities Layer ───────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
